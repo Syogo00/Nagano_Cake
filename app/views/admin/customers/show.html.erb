@@ -19,8 +19,12 @@
   <%= @customer.telephone_number %>
 </div>
 <div class="field">会員ステータス
-  <%= @customer.is_active %>
+  <% if @customer.is_active == true %>
+    <p>有効</p>
+  <% else %>
+    <p>退会</p>
+  <% end %>
 </div>
 
 
-<%= link_to "編集する", edit_admin_customer_path %>  <%= link_to "会員一覧に戻る", admin_customers_path %>
+<%= link_to "編集する", edit_admin_customer_path %>
