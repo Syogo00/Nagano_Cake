@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   namespace :admin do
+    resources :items, only: [:index, :new, :create, :edit, :show]
+  end
+  
+  namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
   end
+  
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
   end
-  namespace :public do
 
-  end
   namespace :admin do
     get '' => "homes#top"
   end
