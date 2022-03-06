@@ -1,4 +1,5 @@
 <h2>商品一覧</h2>
+
 <table>
   <thead>
     <tr>
@@ -10,8 +11,24 @@
     </tr>
   </thead>
   <tbody>
+    <% @items.each do |item| %>
     <tr>
-      <td></td>
+      <td><%= item.id %></td>
+      <td>
+        <%= link_to admin_item_path(item) do %>
+          <i><%= item.name %></i>
+        <% end %>
+      </td>
+      <td><%= item.price %></td>
+      <td><%= item.genre.name %></td>
+      <td>
+        <% if item.is_active == true %>
+          <p>販売中</p>
+        <% else %>
+          <p>販売停止中</p>
+        <% end %>
+      </td>
     </tr>
+    <% end %>
   </tbody>
 </table>
