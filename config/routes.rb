@@ -3,9 +3,12 @@ Rails.application.routes.draw do
    root to: 'public/homes#top'
     get 'about' => 'public/homes#about'
 
-    get 'customers/my_page' => "customers#show"
-    get 'customers/edit'
+
+    get 'customers/my_page' => "public/customers#show"
+    get 'customers/edit' => "public/customers#edit"
+    patch 'customers' => "public/customers#update"
     get 'customers/leave'
+
 
     get 'items' => "items#index"
     get 'items/id' => "items#show"
