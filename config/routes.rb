@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'adresses/index'
+
+    get 'adresses/index' => "public/adresses#index"
+    post 'adresses' => "public/adresses#create"
+    delete 'adresses/destroy' => "public/adresses#destroy"
     get 'adresses/edit'
-  end
+
    root to: 'public/homes#top'
     get 'about' => 'public/homes#about'
 
