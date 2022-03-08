@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'adresses/index'
+    get 'adresses/edit'
+  end
    root to: 'public/homes#top'
     get 'about' => 'public/homes#about'
 
@@ -7,8 +11,8 @@ Rails.application.routes.draw do
     get 'customers/my_page' => "public/customers#show"
     get 'customers/edit' => "public/customers#edit"
     patch 'customers' => "public/customers#update"
-    get 'customers/leave'
-
+    get 'customers/leave' => "public/customers#leave"
+    patch 'customers/withdraw' =>"public/customers#withdraw"
 
     get 'items' => "items#index"
     get 'items/id' => "items#show"
