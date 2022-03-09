@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-
-
-    get 'adresses/index' => "public/adresses#index"
-    post 'adresses' => "public/adresses#create"
-    delete 'adresses/destroy' => "public/adresses#destroy"
-    get 'adresses/edit'
+  
+  scope module: :public do
+    resources :addresses, only: [:index, :create, :destroy, :edit, :update]
+  end
 
    root to: 'public/homes#top'
     get 'about' => 'public/homes#about'
