@@ -14,8 +14,9 @@ Rails.application.routes.draw do
     get 'customers/leave' => "public/customers#leave"
     patch 'customers/withdraw' =>"public/customers#withdraw"
 
-    get 'items' => "items#index"
-    get 'items/id' => "items#show"
+  scope module: :public do
+    resources :items, only: [:index, :show]
+  end
 
   namespace :admin do
     resources :items, only: [:index, :new, :create, :edit, :show, :update]
