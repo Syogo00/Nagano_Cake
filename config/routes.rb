@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  scope module: :public do
+    resources :cart_items, only: [:index, :create, :update]
+  end
   
   scope module: :public do
     resources :addresses, only: [:index, :create, :destroy, :edit, :update]
