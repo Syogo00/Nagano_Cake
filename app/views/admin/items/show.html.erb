@@ -13,7 +13,7 @@
   <%= @item.genre.name %>
 </div>
 <div class="field">税込価格(税抜価格)
-  <%= (@item.price*1.08).to_i %>(<%= @item.price %>)<span>円</span>
+  <%= (@item.price*1.1).to_i %>(<%= @item.price %>)<span>円</span>
 </div>
 <div class="field">販売ステータス
     <% if @item.is_active == true %>
