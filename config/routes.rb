@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'oders/new'
+    get 'oders/complete'
+    get 'oders/index'
+    get 'oders/show'
+  end
   scope module: :public do
     delete 'cart_items/destroy_all' => "cart_items#destroy_all"
     resources :cart_items, only: [:index, :create, :update, :destroy]
