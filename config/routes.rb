@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+ 
   scope module: :public do
     get 'orders/complete' => "orders#complete"
     post 'orders/confirm' => "orders#confirm"
@@ -8,9 +10,9 @@ Rails.application.routes.draw do
   scope module: :public do
     delete 'cart_items/destroy_all' => "cart_items#destroy_all"
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    
+
   end
-  
+
   scope module: :public do
     resources :addresses, only: [:index, :create, :destroy, :edit, :update]
   end
@@ -27,6 +29,10 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :items, only: [:index, :show]
+  end
+
+  namespace :admin do
+    resources :orders, only: [:show]
   end
 
   namespace :admin do
