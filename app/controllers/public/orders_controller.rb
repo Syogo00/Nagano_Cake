@@ -56,12 +56,16 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+
   end
 
   def index
+    @order = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_detail = @order.order_details
   end
 
   private
