@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
- 
+
   scope module: :public do
     get 'orders/complete' => "orders#complete"
     post 'orders/confirm' => "orders#confirm"
@@ -32,7 +32,12 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :orders, only: [:show]
+    resources :order_details, only: [:update]
+  end
+
+
+  namespace :admin do
+    resources :orders, only: [:show, :update]
   end
 
   namespace :admin do
