@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
+  devise_scope :customer do
+    get '/customers/sign_out' => 'devise/sessions#destroy'
+  end
 
+  devise_scope :customer do
+    get '/admins/sign_out' => 'devise/sessions#destroy'
+  end
 
   scope module: :public do
     get 'orders/complete' => "orders#complete"
