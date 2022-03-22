@@ -1,30 +1,40 @@
-<h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h2>
-
-<div class="field">会員ID
-  <%= @customer.id %>
+<div class="container">
+  <h2 class="m-2"><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h2>
+  <div class="col-lg-10 m-auto">
+    <div class="field">
+      <span class="font-weight-bold">会員ID</span>
+      <%= @customer.id %>
+    </div>
+    <div class="field">
+      <span class="font-weight-bold">氏名</span>
+      <%= @customer.first_name %>  <%= @customer.last_name %>
+    </div>
+    <div class="field">
+      <span class="font-weight-bold">フリガナ</span>
+      <%= @customer.first_name_kana %>  <%= @customer.last_name_kana %>
+    </div>
+    <div class="field">
+      <span class="font-weight-bold">郵便番号</span>
+      <%= @customer.postal_code %>
+    </div>
+    <div class="field">
+      <span class="font-weight-bold">住所</span>
+      <%= @customer.address %>
+    </div>
+    <div class="field">
+      <span class="font-weight-bold">電話番号</span>
+      <%= @customer.telephone_number %>
+    </div>
+    <div class="field">
+      <span class="font-weight-bold">会員ステータス</span>
+      <% if @customer.is_active == true %>
+        <p>有効</p>
+      <% else %>
+        <p>退会</p>
+      <% end %>
+    </div>
+    <div class="text-center">
+      <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success" %>
+    </div>
+  </div>
 </div>
-<div class="field">氏名
-  <%= @customer.first_name %>  <%= @customer.last_name %>
-</div>
-<div class="field">フリガナ
-  <%= @customer.first_name_kana %>  <%= @customer.last_name_kana %>
-</div>
-<div class="field">郵便番号
-  <%= @customer.postal_code %>
-</div>
-<div class="field">住所
-  <%= @customer.address %>
-</div>
-<div class="field">電話番号
-  <%= @customer.telephone_number %>
-</div>
-<div class="field">会員ステータス
-  <% if @customer.is_active == true %>
-    <p>有効</p>
-  <% else %>
-    <p>退会</p>
-  <% end %>
-</div>
-
-
-<%= link_to "編集する", edit_admin_customer_path %>

@@ -1,33 +1,36 @@
-<h2>会員一覧</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customers.each do |customer| %>
-    <tr>
-      <td><%= customer.id %></td>
-      <td>
-        <%= link_to admin_customer_path(customer) do %>
-        <i><%= customer.first_name %><%= customer.last_name %></i>
+<div class="container">
+  <h2 class="m-2">会員一覧</h2>
+  <div class="col-lg-10 m-auto">
+    <table class="table m-3 ">
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td>
+            <%= link_to admin_customer_path(customer) do %>
+              <i><%= customer.first_name %><%= customer.last_name %></i>
+            <% end %>
+          </td>
+          <td><%= customer.email %></td>
+          <td>
+            <% if customer.is_active == true %>
+              <p>有効</p>
+            <% else %>
+              <p>退会</p>
+            <% end %>
+          </td>
+        </tr>
         <% end %>
-      </td>
-      <td><%= customer.email %></td>
-      <td>
-        <% if customer.is_active == true %>
-          <p>有効</p>
-        <% else %>
-          <p>退会</p>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+</div>
 

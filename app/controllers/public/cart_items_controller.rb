@@ -11,7 +11,6 @@ class Public::CartItemsController < ApplicationController
     @cart_item = @cart_items.find_by(item: params[:item_id])
     if @cart_item
       @cart_item.update(amount: params[:amount].to_i+@cart_item.amount)
-      redirect_to cart_items_path
     else
       @cart_item = CartItem.new
       @cart_item.amount=params[:amount]
@@ -20,6 +19,7 @@ class Public::CartItemsController < ApplicationController
       @cart_item.customer_id = current_customer.id
       @cart_item.save
     end
+    redirect_to cart_items_path
   end
 
 

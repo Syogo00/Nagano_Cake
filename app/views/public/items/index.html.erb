@@ -1,18 +1,25 @@
-<h2>商品一覧</h2><p>（全<%= @items.count %>件）</p>
-<div>
-  <% @items.each do |item| %>
-    <table class="table">
-      <tbody>
-        <tr>
-          <td>
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image(170,170) %>
+
+  <div class="container">
+    <h2 class="display-5">商品一覧</h2>
+    <p>（全<%= @items.count %>件）</p>
+  
+    <div class="row">
+      <div class="col-lg-8 m-auto">
+        <table class="table">
+          <tbody>
+            <% @items.each do |item| %>
+              <tr>
+                <td>
+                  <%= link_to item_path(item.id) do %>
+                    <%= image_tag item.get_image(100,100) %>
+                  <% end %>
+                </td>
+                <td><%= item.name %></td>
+                <td>￥<%= (item.price*1.1).to_i %></td>
+              </tr>
             <% end %>
-          </td>
-          <td><%= item.name %></td>
-          <td>￥<%= (item.price*1.1).to_i %></td>
-        </tr>
-      </tbody>
-    </table>
-  <% end %>
-</div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

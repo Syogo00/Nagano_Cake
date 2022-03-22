@@ -1,24 +1,27 @@
-<h2>配送先編集</h2>
-<% if @address.errors.any? %>
-  <%= @address.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @address.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+<div class="container">
+  <h2 class="m-2">配送先編集</h2>
+  <div class="col-lg-10 m-auto">
+    <% if @address.errors.any? %>
+      <%= @address.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @address.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
-
-<%= form_with model: @address, url: address_path(@address.id) do |f| %>
-  <div class="form-group">郵便番号(ハイフンなし)
-      <%= f.text_field :postal_code %>
+    
+    <%= form_with model: @address, url: address_path(@address.id) do |f| %>
+      <div class="field">郵便番号(ハイフンなし)
+        <%= f.text_field :postal_code %>
+      </div>
+      <div class="field">住所
+        <%= f.text_field :address %>
+      </div>
+      <div class="field">氏名
+        <%= f.text_field :name %>
+      </div>
+      <div class="text-center">
+        <%= f.submit "変更内容を保存", class: "btn btn-success" %>
+      </div>
+    <% end %>
   </div>
-  <div class="form-group">住所
-      <%= f.text_field :address %>
-  </div>
-  <div class="form-field">氏名
-      <%= f.text_field :name %>
-  </div>
-  <dib class="form-field">
-      <%= f.submit "変更内容を保存" %>
-  </dib>
-<% end %>

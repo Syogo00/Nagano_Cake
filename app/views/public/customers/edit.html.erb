@@ -1,30 +1,31 @@
-<h2>会員情報編集</h2>
+<div class="container">
+  <h2 class="m-2">会員情報編集</h2>
+  <div class="col-lg-10 m-auto">
+    <%= form_with model: @customer, url: customers_path(current_customer) do |f| %>
+    <div class="field">氏名
+       <%= f.text_field :first_name %>  <%= f.text_field :last_name %>
+    </div>
+    <div class="field">フリガナ
+      <%= f.text_field :first_name_kana %> <%= f.text_field :last_name_kana %>
+    </div>
+    <div class="field">郵便番号
+      <%= f.text_field :postal_code %>
+    </div>
+    <div class="field">住所
+      <%= f.text_field :address %>
+    </div>
+    <div class="field">電話番号
+      <%= f.text_field :telephone_number %>
+    </div>
+    <div class="field">メールアドレス
+      <%= f.text_field :email %>
+    </div>
+    <div class="field text-right">
+      <%= f.submit "変種内容を保存", class: "btn btn-success" %>
+    </div>
+    <% end %>
+    <div class="text-right">
+      <%= link_to "退会する", customers_leave_path, class: "btn btn-danger" %>
+    </div>
 
-<%= form_with model: @customer, url: customers_path(current_customer) do |f| %>
-<div class="form-field">氏名
-    <%= f.text_field :first_name %>  <%= f.text_field :last_name %>
-</div>
-<div class="form-field">フリガナ
-    <%= f.text_field :first_name_kana %> <%= f.text_field :last_name_kana %>
-</div>
-<div class="form-field">郵便番号
-    <%= f.text_field :postal_code %>
-</div>
-<div class="form-field">住所
-    <%= f.text_field :address %>
-</div>
-<div class="form-field">電話番号
-    <%= f.text_field :telephone_number %>
-</div>
-<div class="form-field">メールアドレス
-    <%= f.text_field :email %>
-</div>
-
-<div class="form-field">
-    <%= f.submit "変種内容を保存" %>
-</div>
-<% end %>
-
-<div>
-  <%= link_to "退会する", customers_leave_path %>
 </div>

@@ -1,20 +1,28 @@
-<div class="d-flex justify-content-center">
-  <p>
-    ようこそ、ながのCAKEへ！<br>
-    このサイトは、ケーキ販売のECサイトになります。<br>
-    会員でない方も商品の閲覧はできますが、<br>
-    購入には会員登録が必要になります。
-  </p>
-</div>
-<div>
-  <h2>新規商品</h2>
-  <div class="row">
-    <% @items.each do |item| %>
-      <%= image_tag item.get_image(170,170) %>
-      <span class="text-center d-block"><%= item.name %></span>
-      <span class="text-center d-block">￥<%= (item.price*1.1).to_i %></span>
-    <% end %>
+<div class="mr-auto">
+  <div>
+    <p class="text-center p-3 m-2">
+      ようこそ、ながのCAKEへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。
+    </p>
+  </div>
+  <div class="m-auto p-4 m-2">
+    <h2 class="col-lg-2 display-5 text-left">新規商品</h2>
+    <div class="row">
+      <% @items.each do |item| %>
+        <div class="col-lg-3 text-center">
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image(170,170) %>
+          <% end %>
+          <br>
+          <span class="text-center d-block"><%= item.name %></span><br>
+          <span class="text-center d-block">￥<%= (item.price*1.1).to_i %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end">
+    <%= link_to "全ての商品を見る＞", items_path %>
   </div>
 </div>
-
-<%= link_to "全ての商品を見る＞", items_path %>
