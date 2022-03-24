@@ -65,7 +65,7 @@
         <% @order_detail.each do |order_detail| %>
         <tr>
           <td><%= order_detail.item.name %></td>
-          <td><%= order_detail.item.price %></td>
+          <td><%= (order_detail.item.price*1.1).to_i %></td>
           <td><%= order_detail.count %></td>
           <td><%= order_detail.cost %></td>
         </tr>

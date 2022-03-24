@@ -35,7 +35,7 @@ class Public::OrdersController < ApplicationController
     # 1-4.total_costの代入
     @total = 0
     @cart_items.each do |cart_item|
-      @total += cart_item.item.price*cart_item.amount
+      @total += (cart_item.item.price*1.1) * cart_item.amount
     end
 
     order.total_cost = 800 + @total.to_i
@@ -48,7 +48,7 @@ class Public::OrdersController < ApplicationController
      @order_detail.order_id = order.id
      @order_detail.item_id = cart_item.item.id
      @order_detail.count = cart_item.amount
-     @order_detail.cost = cart_item.amount * cart_item.item.price
+     @order_detail.cost = cart_item.amount * (cart_item.item.price*1.1)
      @order_detail.save
     end
     # 3.カートの中身を消す
